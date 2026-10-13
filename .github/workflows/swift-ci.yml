@@ -16,16 +16,16 @@ jobs:
       - name: Build Application for Testing
         run: |
           xcodebuild build-for-testing \
-          -project <PROJECT_NAME>.xcodeproj \
-          -scheme <SCHEME_NAME> \
+          -project TodoList.xcodeproj \
+          -scheme TodoList \
           -destination 'platform=iOS Simulator,name=iPhone 17,OS=26.5' \
           CODE_SIGNING_ALLOWED=NO
 
       - name: Run Unit Tests
         run: |
           xcodebuild test-without-building \
-          -project <PROJECT_NAME>.xcodeproj \
-          -scheme <SCHEME_NAME> \
+          -project TodoList.xcodeproj \
+          -scheme TodoList \
           -destination 'platform=iOS Simulator,name=iPhone 17,OS=26.5' \
           CODE_SIGNING_ALLOWED=NO
 
@@ -47,9 +47,9 @@ jobs:
       - name: Build App for CodeQL Analysis
         run: |
           xcodebuild build \
-          -project <PROJECT_NAME>.xcodeproj \
-          -scheme <SCHEME_NAME> \
+          -project TodoList.xcodeproj \
+          -scheme TodoList \
           -destination 'generic/platform=iOS Simulator' \
           CODE_SIGNING_ALLOWED=NO
-          - name: Perform CodeQL Analysis
-          uses: github/codeql-action/analyze@v3
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
